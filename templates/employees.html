@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+  {% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="table-responsive">
+                    <table  class="table table-bordred table-striped">
+                        <thead>
+                           <th>Employee ID</th>
+                            <th>Emoloyee Name</th>
+                           <th>Emoloyee email</th>
+                             <th>Mobile No</th>
+                             <th>Hire Date</th>
+                             <th>Today</th>
+                             <th>working Hour</th>
+                             <th>Present</th>
+                             <th>Absent</th>
+                             <th>Sick Leave</th>
+                            <th>Day Off</th>
+                       </thead>
+                        <tbody>
+                               {% for i in  range(employees|length) %}
+                                 <tr>
+                                     <td>{{ employees[i].id }}</td>
+                                     <td>{{ employees[i].name }}</td>
+                                     <td>{{ employees[i].email }}</td>
+                                     <td>{{ employees[i].mobile_no }}</td>
+                                     <td>{{ employees[i].hireDate }}</td>
+                                     <td>{{ attendens[i][1] }}</td>
+                                     <td> {{ attendens[i][2] }} </td>
+                                     {% if status[i][1] %}
+                                        <td>Yes</td>
+                                     {% else %}
+                                        <td>No</td>
+                                     {% endif %}
+
+                                     {% if status[i][2] %}
+                                        <td>Yes</td>
+                                     {% else %}
+                                        <td>No</td>
+                                     {% endif %}
+
+                                     {% if status[i][3] %}
+                                        <td>Yes</td>
+                                     {% else %}
+                                        <td>No</td>
+                                     {% endif %}
+
+                                      {% if  status[i][4]  %}
+                                        <td>Yes</td>
+                                     {% else %}
+                                        <td>No</td>
+                                     {% endif %}
+
+
+                                 </tr>
+                               {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+  {% block content %}
+        <div class="container">
+        <div class="col-xs-12">
+        <form method="post" action="">
+            <!-- hidden tag is a part of portocetion of secrte key -->
+            {{ form.hidden_tag() }}
+            <!-- this to group form together  -->
+            <fieldset class=form-group">
+                <!--this make name for the fieldset -->
+                <legend class="border-bottom">Update</legend>
+
+                <div class="form-group">
+                    <!-- class="form-control.label" is bootstrap class -->
+                    {{form.employeeID.label(class="form-control.label")}}
+                    {{ form.employeeID()}}
+
+                </div>
+
+                <div class="form-group">
+                    {{form.present.label(class="form-control.label")}}
+                    {{ form.present()}}
+
+                </div>
+
+                <div class="form-group">
+                    {{form.absent.label(class="form-control.label")}}
+                    {{ form.absent()}}
+
+                </div>
+
+                  <div class="form-group">
+                    {{form.dayOFF.label(class="form-control.label")}}
+                    {{ form.dayOFF()}}
+
+                </div>
+
+                  <div class="form-group">
+                    {{form.sickLeave.label(class="form-control.label")}}
+                    {{ form.sickLeave()}}
+
+                </div>
+
+                <div class="form-group">
+                    {{form.workingHours.label(class="form-control.label")}}
+                    {% if form.workingHours.errors %}
+                        {{ form.workingHours(class="form-control is-invalid")}}
+                        <div class="invalid-feedback">
+                            {% for workingHours in form.workingHours.errors %}
+                                <span> {{ error }} </span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.workingHours()}}
+                    {% endif %}
+                </div>
+
+            </fieldset>
+             <div class="form-group">
+                {{ form.submit(class="btn btn-primary") }}
+            </div>
+
+        </form>
+    </div>
+
+    </div>
+
+{% endblock %}
